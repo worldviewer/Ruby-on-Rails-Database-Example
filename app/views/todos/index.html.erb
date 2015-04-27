@@ -6,5 +6,15 @@
 </head>
 <body>
 	<h1>Todo:</h1>
+
+	<ul>
+
+	<% @todos.each do |todo| %>
+
+		<li><%= todo[:description] %></li>	
+
+	<% end %>
+	</ul>
+
 </body>
 </html>
