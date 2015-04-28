@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Author List</title>
+</head>
+<body>
+	<h1>Author:</h1>
+
+	<ul>
+
+	<% @authors.each do |author| %>
+
+		<li><%= author[:name] %>: <%= author[:age] %></li>	
+
+	<% end %>
+	</ul>
+
+	<%= form_for :author do |f| %>
+
+	<p>
+		<%= f.label :name %><br>
+	    <%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= f.label :age %><br>
+	    <%= f.text_field :age %>
+	</p>
+
+	<p>
+	    <%= f.submit %>
+	</p>
+
+	<% end %>
+
+</body>
+</html>

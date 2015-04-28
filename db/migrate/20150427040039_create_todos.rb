@@ -4,6 +4,8 @@ class CreateTodos < ActiveRecord::Migration
       t.string :description
 
       t.timestamps null: false
+
+      t.references :author
     end
   end
 end
