@@ -6,7 +6,7 @@ class TodosController < ApplicationController
 	def create
 		todo = params[:todo]
 		puts todo
-		Todo.create(description: todo[:description])
+		Todo.create({description: todo[:description], author_id: todo[:author_id]})
 		redirect_to "/todos"
 	end
 end

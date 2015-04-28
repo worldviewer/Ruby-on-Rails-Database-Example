@@ -3,36 +3,68 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Author List</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>	
 </head>
 <body>
-	<h1>Author:</h1>
+	<div class="container">
 
-	<ul>
+		<h1>All Chores:</h1>
 
-	<% @authors.each do |author| %>
+		<ul>
 
-		<li><%= author[:name] %>: <%= author[:age] %></li>	
+		<% @authors.each do |author| %>
 
-	<% end %>
-	</ul>
+			<li><%= author[:name] %>: <%= author[:age] %></li>	
 
-	<%= form_for :author do |f| %>
+			<% @todos.each do |todo| %>
+				<ul>
 
-	<p>
-		<%= f.label :name %><br>
-	    <%= f.text_field :name %>
-	</p>
+				<% if todo[:author_id] == author[:id] %>
+					<li><%= todo[:description] %></li>
+				<% end %>
 
-	<p>
-		<%= f.label :age %><br>
-	    <%= f.text_field :age %>
-	</p>
+				</ul>
+			<% end %>
 
-	<p>
-	    <%= f.submit %>
-	</p>
+			<%= form_for :todo, url: "/todos", method: "post" do |f| %>
 
-	<% end %>
+				<li>Assign a New Todo for <%= author[:name] %>:</li>
+			    <%= f.text_area :description %>
 
+			    <!-- Cannot get the following line to work ... -->
+			    <%= f.hidden_field :author_id %>
+			    <%= f.submit "Add Chore" %>
+
+			<% end %>
+
+		<% end %>
+		</ul>
+
+		<h1>Add a New Author:</h1>
+
+		<%= form_for :author do |f| %>
+
+		<p>
+			<%= f.label :name %><br>
+		    <%= f.text_field :name %>
+		</p>
+
+		<p>
+			<%= f.label :age %><br>
+		    <%= f.text_field :age %>
+		</p>
+
+		<p>
+		    <%= f.submit %>
+		</p>
+
+		<% end %>
+
+	</div>
 </body>
 </html>

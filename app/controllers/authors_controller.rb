@@ -1,6 +1,8 @@
 class AuthorsController < ApplicationController
 	def index
 		@authors = Author.all
+
+		@todos = Todo.all
 	end
 
 	def create

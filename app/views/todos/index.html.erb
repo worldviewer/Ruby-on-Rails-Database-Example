@@ -3,31 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Todo List</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Todo:</h1>
+	<div class="container">
 
-	<ul>
+		<h1>Todo:</h1>
 
-	<% @todos.each do |todo| %>
+		<ul>
 
-		<li><%= todo[:description] %></li>	
+		<% @todos.each do |todo| %>
 
-	<% end %>
-	</ul>
+			<li><%= todo[:description] %></li>	
 
-	<%= form_for :todo do |f| %>
+		<% end %>
+		</ul>
 
-	<p>
-		<%= f.label :description %><br>
-	    <%= f.text_field :description %>
-	</p>
+		<%= form_for :todo do |f| %>
 
-	<p>
-	    <%= f.submit %>
-	</p>
+		<p>
+			<%= f.label :description %><br>
+		    <%= f.text_field :description %>
+		</p>
 
-	<% end %>
+		<p>
+		    <%= f.submit %>
+		</p>
 
+		<% end %>
+
+	</div>
 </body>
 </html>
